@@ -7,7 +7,7 @@ class Boomerang {
     this.skin = '🌀';
     this.position = 0;
   }
-
+  //мое
   fly() {
     this.moveRight();
     this.moveLeft();
