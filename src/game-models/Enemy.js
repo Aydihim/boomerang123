@@ -3,11 +3,25 @@
 class Enemy {
   constructor() {
     this.generateSkin();
-    this.position = 2;
+    this.position = Math.floor(Math.random() * (60 - 55) + 55);
+    this.trackVert = Math.floor(Math.random() * 5);
   }
 
   generateSkin() {
-    const skins = ['👾', '💀', '👹', '👻', '👽', '👿', '💩', '🤡', '🤺', '🧛', '🧟', '🎃'];
+    const skins = [
+      '🍩',
+      '🍷',
+      '🍕',
+      '🍔',
+      '🍬',
+      '🍺',
+      '🍫',
+      '🥓',
+      '🧁',
+      '🍶',
+      '🌭',
+      '🍰',
+    ];
     this.skin = skins[Math.floor(Math.random() * skins.length)];
   }
 
@@ -17,8 +31,10 @@ class Enemy {
   }
 
   die() {
-    this.position = '?';
-    console.log('Enemy is dead!');
+    this.generateSkin();
+    this.position = Math.floor(Math.random() * (60 - 55) + 55);
+    this.trackVert = Math.floor(Math.random() * 5);
+    console.log('Unhealthy food is dead!');
   }
 }
 
