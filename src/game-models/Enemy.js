@@ -1,10 +1,15 @@
 // Враг.
 
 class Enemy {
-  constructor() {
+  constructor(
+    skin,
+    pos = Math.floor(Math.random() * (60 - 55) + 55),
+    line = Math.floor(Math.random() * 5)
+  ) {
+    this.skin = skin;
+    this.pos = pos;
+    this.line = line;
     this.generateSkin();
-    this.position = Math.floor(Math.random() * (60 - 55) + 55);
-    this.trackVert = Math.floor(Math.random() * 5);
   }
 
   generateSkin() {
@@ -27,13 +32,13 @@ class Enemy {
 
   moveLeft() {
     // Идём влево.
-    this.position -= 1;
+    this.pos -= 1;
   }
 
   die() {
     this.generateSkin();
-    this.position = Math.floor(Math.random() * (60 - 55) + 55);
-    this.trackVert = Math.floor(Math.random() * 5);
+    this.pos = Math.floor(Math.random() * (60 - 55) + 55);
+    this.line = Math.floor(Math.random() * 5);
     console.log('Unhealthy food is dead!');
   }
 }

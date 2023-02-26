@@ -3,8 +3,10 @@
 const Game = require('./src/Game');
 
 // Инициализация игры с настройками.
+const name = process.argv[2];
 const game = new Game({
-  trackLength: 30,
+  trackLength: 60,
+  name,
 });
 
 // Запуск игры.

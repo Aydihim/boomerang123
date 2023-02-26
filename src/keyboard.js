@@ -3,8 +3,11 @@
 // Главное не используй всё вместе!
 
 const keypress = require('keypress');
-const player = require('play-sound')(opts = {})
+// const player = require('play-sound')((opts = {}));
+
+const Game = require('./Game');
 const Hero = require('./game-models/Hero');
+
 // Управление.
 // Настроим соответствия нажатий на клавиши и действий в игре.
 
@@ -13,13 +16,12 @@ const keyboard = {
   w: () => console.log('w'),
   s: () => console.log('s'),
   d: () => console.log('d'),
-  e: () => console.log('e'),
-  Space: () => console.log('Space'),
+  b: () => console.log('Space'),
 };
 
 // Какая-то функция.
 
-const keyboardFunction = function runInteractiveConsole() {
+const keyboardFunction = function runInteractiveConsole(hero) {
   keypress(process.stdin);
   process.stdin.on('keypress', (ch, key) => {
     if (key) {
@@ -32,39 +34,40 @@ const keyboardFunction = function runInteractiveConsole() {
         hero.moveLeft();
       }
 
-      if (key.name === 'Space') {
+      if (key.name === 'b') {
         hero.boomerang.moveRight(hero);
       }
-// нужно добавить в героях функции для движения вверх и вниз
-      if (key.name === 'w' && hero.position1 !== 0) {
+      // нужно добавить в героях функции для движения вверх и вниз
+      if (key.name === 'w' && hero.line !== 0) {
         hero.moveUp();
       }
 
-      if (key.name === 's' && hero.position1 !== 2) {
+      if (key.name === 's' && hero.line !== 4) {
         hero.moveDown();
       }
 
-      if (key.name === 'e') {
-        hero.boomerang.moveRight(hero);
+      // if (key.name === 'e') {
+      //   this.hero.boomerang.moveRight();
 
-        player.play('./src/sounds/congratulations.wav', (err) => {
-          if (err) throw err;
-        });
-      }
-      // Прерывание программы. 
-      // (может даже эту часть нужно закомментировать)
-      if (key.ctrl && key.name === 'c') {
-        process.exit();
-      }
+      // player.play('./src/sounds/congratulations.wav', (err) => {
+      //   if (err) throw err;
+      // });
     }
+    // Прерывание программы.
+    // (может даже эту часть нужно закомментировать)
+    //       if (key.ctrl && key.name === 'c') {
+    //         process.exit();
+    //       }
+    //     }
   });
   process.stdin.setRawMode(true);
-}
+};
 
 // Давай попробуем запустить этот скрипт!
 
-runInteractiveConsole();
+// runInteractiveConsole();
 module.exports = keyboardFunction;
+// module.exports = keyboard;
 // экспортировать функцию в Game
 
 // keyboardFunction(this.hero, this.enemy);

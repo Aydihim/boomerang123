@@ -1,34 +1,35 @@
 // Наш герой.
-const clc = require('cli-color');
-const Boomerang = require("./Boomerang");
+
+const Boomerang = require('./Boomerang');
 
 class Hero {
-  constructor({ position }) {
-    this.skin = ':женщина_играет_в_гандбол::оттенок-кожи-3:'; // можете использовать любые emoji
-    this.posH = posH ?? 1;
-    this.posV = 1;
-    this.boomerang = new Boomerang();
+  constructor(skin = '🤾🏼‍♀️', pos = 1, line = 1, boomerang = new Boomerang()) {
+    //this.skin = ':женщина_играет_в_гандбол::оттенок-кожи-3:'; // ха-ха
+    this.skin = skin; // ха-ха
+    this.pos = pos;
+    this.line = line;
+    this.boomerang = boomerang;
   }
 
   moveLeft() {
     // Идём влево.
-    this.posH -= 1;
+    this.pos -= 1;
   }
 
   moveRight() {
     // Идём вправо.
-    this.posH += 1;
+    this.pos += 1;
   }
 
   moveUp() {
-    if (this.posV > 0) {
-      this.posV -= 1;
+    if (this.line > 0) {
+      this.line -= 1;
     }
   }
 
   moveDown() {
-    if (this.posV < 4) {
-      this.posV += 1;
+    if (this.line < 4) {
+      this.line += 1;
     }
   }
 
@@ -39,8 +40,11 @@ class Hero {
 
   die() {
     this.skin = '🤰';
-    console.log(clc.red('YOU GAINED EXTRA KILOS!🤰'));
-    process.exit();
+    this.pos -= 1;
+    setTimeout(() => {
+      console.log('YOU GAINED EXTRA KILOS!🤰');
+      process.exit();
+    }, 150);
   }
 }
 
