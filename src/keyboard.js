@@ -52,12 +52,12 @@ const keyboardFunction = function runInteractiveConsole(hero) {
       // player.play('./src/sounds/congratulations.wav', (err) => {
       //   if (err) throw err;
       // });
+      if (key.ctrl && key.name === 'c') {
+        process.exit();
+      }
     }
     // Прерывание программы.
     // (может даже эту часть нужно закомментировать)
-    //       if (key.ctrl && key.name === 'c') {
-    //         process.exit();
-    //       }
     //     }
   });
   process.stdin.setRawMode(true);

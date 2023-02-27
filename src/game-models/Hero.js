@@ -3,7 +3,7 @@
 const Boomerang = require('./Boomerang');
 
 class Hero {
-  constructor(skin = '🤾🏼‍♀️', pos = 1, line = 1, boomerang = new Boomerang()) {
+  constructor(skin = '🤾‍♀️', pos = 1, line = 1, boomerang = new Boomerang()) {
     //this.skin = ':женщина_играет_в_гандбол::оттенок-кожи-3:'; // ха-ха
     this.skin = skin; // ха-ха
     this.pos = pos;
@@ -42,7 +42,7 @@ class Hero {
     this.skin = '🤰';
     this.pos -= 1;
     setTimeout(() => {
-      console.log('YOU GAINED EXTRA KILOS!🤰');
+      console.log('Ты набрала лишних кило!🤰');
       process.exit();
     }, 150);
   }

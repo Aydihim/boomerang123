@@ -1,11 +1,7 @@
 // Враг.
 
 class Enemy {
-  constructor(
-    skin,
-    pos = Math.floor(Math.random() * (60 - 55) + 55),
-    line = Math.floor(Math.random() * 5)
-  ) {
+  constructor(skin, pos = 60, line = Math.floor(Math.random() * 5)) {
     this.skin = skin;
     this.pos = pos;
     this.line = line;

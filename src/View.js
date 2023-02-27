@@ -3,17 +3,14 @@
 const { EOL } = require('os');
 
 class View {
-  render(board) {
-    const yourTeamName = 'DADI';
-    // Тут всё рисуем.
+  render(board, gamerName, les1, les2) {
     console.clear();
     console.log('\n');
-    // console.log(track1.join(''));
-    // console.log(track.join(''));
-    // console.log(track2.join(''));
+    console.log(les1.join(''));
     console.log(board.map((el) => el.join('')).join(EOL));
+    console.log(les2.join(''));
     console.log('\n');
-    console.log(`Produced by: "${yourTeamName}"`);
+    console.log(`Игрок: "${gamerName}"`);
   }
 }
 
