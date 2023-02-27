@@ -3,38 +3,72 @@
 // Главное не используй всё вместе!
 
 const keypress = require('keypress');
+// const player = require('play-sound')((opts = {}));
+
+const Game = require('./Game');
+const Hero = require('./game-models/Hero');
 
 // Управление.
 // Настроим соответствия нажатий на клавиши и действий в игре.
 
 const keyboard = {
-  q: () => console.log('q'),
+  a: () => console.log('a'),
   w: () => console.log('w'),
-  e: () => console.log('e'),
-  r: () => console.log('r'),
-  t: () => console.log('t'),
-  y: () => console.log('y'),
+  s: () => console.log('s'),
+  d: () => console.log('d'),
+  b: () => console.log('Space'),
 };
 
 // Какая-то функция.
 
-function runInteractiveConsole() {
+const keyboardFunction = function runInteractiveConsole(hero) {
   keypress(process.stdin);
   process.stdin.on('keypress', (ch, key) => {
     if (key) {
       // Вызывает команду, соответствующую нажатой кнопке.
-      if (key.name in keyboard) {
-        keyboard[key.name]();
+      if (key.name === 'd') {
+        hero.moveRight();
       }
-      // Прерывание программы.
+
+      if (key.name === 'a') {
+        hero.moveLeft();
+      }
+
+      if (key.name === 'b') {
+        hero.boomerang.moveRight(hero);
+      }
+      // нужно добавить в героях функции для движения вверх и вниз
+      if (key.name === 'w' && hero.line !== 0) {
+        hero.moveUp();
+      }
+
+      if (key.name === 's' && hero.line !== 4) {
+        hero.moveDown();
+      }
+
+      // if (key.name === 'e') {
+      //   this.hero.boomerang.moveRight();
+
+      // player.play('./src/sounds/congratulations.wav', (err) => {
+      //   if (err) throw err;
+      // });
       if (key.ctrl && key.name === 'c') {
         process.exit();
       }
     }
+    // Прерывание программы.
+    // (может даже эту часть нужно закомментировать)
+    //     }
   });
   process.stdin.setRawMode(true);
-}
+};
 
 // Давай попробуем запустить этот скрипт!
 
-runInteractiveConsole();
+// runInteractiveConsole();
+module.exports = keyboardFunction;
+// module.exports = keyboard;
+// экспортировать функцию в Game
+
+// keyboardFunction(this.hero, this.enemy);
+// const keyboardFunction = require('./keyboard');

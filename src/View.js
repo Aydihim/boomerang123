@@ -1,14 +1,16 @@
 // Сделаем отдельный класс для отображения игры в консоли.
 
-class View {
-  render() {
-    const yourTeamName = 'Elbrus';
+const { EOL } = require('os');
 
-    // Тут всё рисуем.
+class View {
+  render(board, gamerName, les1, les2) {
     console.clear();
-    console.log(this.game.track.join(''));
-    console.log('\n\n');
-    console.log(`Created by "${yourTeamName}" with love`);
+    console.log('\n');
+    console.log(les1.join(''));
+    console.log(board.map((el) => el.join('')).join(EOL));
+    console.log(les2.join(''));
+    console.log('\n');
+    console.log(`Игрок: "${gamerName}"`);
   }
 }
 

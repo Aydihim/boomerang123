@@ -1,24 +1,41 @@
 // Враг.
 
 class Enemy {
-  constructor() {
+  constructor(skin, pos = 60, line = Math.floor(Math.random() * 5)) {
+    this.skin = skin;
+    this.pos = pos;
+    this.line = line;
     this.generateSkin();
-    this.position = 2;
   }
 
   generateSkin() {
-    const skins = ['👾', '💀', '👹', '👻', '👽', '👿', '💩', '🤡', '🤺', '🧛', '🧟', '🎃'];
+    const skins = [
+      '🍩',
+      '🍷',
+      '🍕',
+      '🍔',
+      '🍬',
+      '🍺',
+      '🍫',
+      '🥓',
+      '🧁',
+      '🍶',
+      '🌭',
+      '🍰',
+    ];
     this.skin = skins[Math.floor(Math.random() * skins.length)];
   }
 
   moveLeft() {
     // Идём влево.
-    this.position -= 1;
+    this.pos -= 1;
   }
 
   die() {
-    this.position = '?';
-    console.log('Enemy is dead!');
+    this.generateSkin();
+    this.pos = Math.floor(Math.random() * (60 - 55) + 55);
+    this.line = Math.floor(Math.random() * 5);
+    console.log('Unhealthy food is dead!');
   }
 }
 
